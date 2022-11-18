@@ -29,12 +29,26 @@ for i in range(0,photophobiadata.shape[0]):
 #print(posttdcs.shape)
 
 # Plot the data for pre and post
-ax=plt.gca()
-pretdcs.plot(x='time',y=['Average_intensity','Average_intensity.1'],ax=ax,kind='line')
-plt.xticks(rotation=90)
+plt.subplot(2,1,1)
+ax1=plt.gca()
+pretdcs.plot(y=['Average_intensity','Average_intensity.1'],ax=ax1,kind='line',grid=True,marker = 'o',use_index=True)
+ax1.legend(["Left Cranium","Right Cranium"])
+#plt.xticks(rotation=15)
+plt.xlabel('Time')
+plt.ylabel('Average Intensity')
+plt.tight_layout()
+plt.minorticks_on()
+
+plt.subplot(2,1,2)
+ax2=plt.gca()
+pretdcs.plot(y=['Average_intensity.2','Average_intensity.3'],ax=ax2,kind='line',grid=True,marker = 'o',use_index=True)
+ax2.legend(["Left Eye","Right Eye"])
+#plt.xticks(rotation=15)
 plt.xlabel('Time')
 plt.ylabel('Average Intensity')
 plt.tight_layout()
 plt.minorticks_on()
 plt.show()
 
+
+# Fit a ploy to the data 
