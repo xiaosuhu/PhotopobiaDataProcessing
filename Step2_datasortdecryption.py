@@ -6,7 +6,7 @@ import numpy as np
 
 
 def write_csv(data):
-    with open('data_test_V2.csv', 'a') as outfile:
+    with open('/Users/frankhu/Moxytech/PhotophobiaData/data_decrypt.csv', 'a') as outfile:
         writer = csv.writer(outfile)
         writer.writerow(data)
 
@@ -64,12 +64,12 @@ for i in range(len(table_regions)):
 write_csv(headrow)
 
 attackcount=1
-with open('PainData20221010edit.csv',newline='') as csvfile:
+with open('/Users/frankhu/Moxytech/PhotophobiaData/PainData20221130edit.csv',newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         if row['geopaindatafilename'][0]=='P':
             # print(row['sync_time'],row['geopaindatafilename'][0])
-            jsondata=json.loads(DecryptXor(row['metadata'][11:len(row['metadata'])],xorKey))
+            jsondata=json.loads(DecryptXor(row['geopaindata'][11:len(row['geopaindata'])],xorKey))
             df = createdf()
             for i in range(len(jsondata['bodymap']['activeCells'])):
                 for tr in range(len(table_regions)):
